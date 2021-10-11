@@ -1,27 +1,60 @@
 import React, {useEffect} from 'react';
-import {requestMovies} from "../state/reducers/Movies-reducer";
+import {requestMovies, setPageNumber} from "../state/reducers/Movies-reducer";
 import {useDispatch, useSelector} from "react-redux";
-import {getMovies} from "../state/selectors/moviesSelectors";
+import {getFetching, getLimit, getMovies, getPageNumber, getTotalMoviesCount} from "../state/selectors/moviesSelectors";
+import MovieCard from "./MovieCard";
+import ReactPaginate from 'react-paginate';
 
-const Movies = () => {
+
+const Movies = (props) => {
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(requestMovies())
-    }, [])
 
     const moviesList = useSelector(getMovies)
 
+    const limit = useSelector(getLimit)
+    const totalMoviesCount = useSelector(getTotalMoviesCount)
+    const pageNumber = useSelector(getPageNumber)
+    const isFetching = useSelector(getFetching)
 
-    console.log(moviesList)
+    const pagesCount = Math.ceil(totalMoviesCount / limit)
+
+
+    useEffect(() => {
+        dispatch(requestMovies(limit, pageNumber))
+    },[pageNumber] )
+
+
+   const handlePageClick = (data) => {
+       dispatch(setPageNumber(data.selected))
+    };
+
 
     return (
-        <div>
-            {moviesList && moviesList.map(movies => (
-                <h1>{movies.title}</h1>
-                )
-            )
-            }
+        <div className='container'>
+            <div className='pagination'>
+                <ReactPaginate
+                    previousLabel={'previous'}
+                    nextLabel={'next'}
+                    breakLabel={'...'}
+                    breakClassName={'break-me'}
+                    pageCount={pagesCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={handlePageClick}
+                    containerClassName={'pagination'}
+                    activeClassName={'active'}
+                />
+            </div>
+
+            {isFetching ? <div className='loading'>Loading....</div>
+                        : <div className='movie-list-container'>
+                    {moviesList.length > 0 &&
+                    moviesList.map(movie => (
+                        <MovieCard key={movie.id} movie={movie}/>
+                    ))}
+                </div>}
+
+
         </div>
     );
 };
