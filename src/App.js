@@ -1,6 +1,6 @@
 import './App.css';
 import MoviesPage from "./MoviesPage/MoviesPage";
-import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
+import {HashRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import Header from "./header/Header";
 import MovieCardInfo from "./MoviesPage/MovieCardInfo";
 

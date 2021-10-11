@@ -32,7 +32,7 @@ const MovieCommentForm = () => {
                     <Field id="comment"
                            as='textarea'
                            rows={5}
-                           cols={70}
+                           cols={50}
                            name="comment"
                            placeholder="Enter you comment" />
                     <div className='form-btn'>
