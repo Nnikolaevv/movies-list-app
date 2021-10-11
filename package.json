@@ -1,5 +1,6 @@
 {
   "name": "test-task-for-big-data",
+  "homepage": "https://nnikolaevv.github.io/movies-list-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

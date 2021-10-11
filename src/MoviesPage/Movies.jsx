@@ -21,11 +21,11 @@ const Movies = (props) => {
 
     useEffect(() => {
         dispatch(requestMovies(limit, pageNumber))
-    },[pageNumber] )
+    }, [pageNumber])
 
 
-   const handlePageClick = (data) => {
-       dispatch(setPageNumber(data.selected))
+    const handlePageClick = (data) => {
+        dispatch(setPageNumber(data.selected))
     };
 
 
@@ -47,7 +47,7 @@ const Movies = (props) => {
             </div>
 
             {isFetching ? <div className='loading'>Loading....</div>
-                        : <div className='movie-list-container'>
+                : <div className='movie-list-container'>
                     {moviesList.length > 0 &&
                     moviesList.map(movie => (
                         <MovieCard key={movie.id} movie={movie}/>

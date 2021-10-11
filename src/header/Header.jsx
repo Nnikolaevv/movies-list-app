@@ -3,24 +3,24 @@ import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
-      <header>
-          <div className="container">
-              <div className="inner-content">
-                  <div className="brand">
-                      <Link to='/movies'>Movie catalog</Link>
-                  </div>
-                  <ul className="nav-links">
-                      <li>
-                          <Link to='/movies'> Some link </Link>
-                      </li>
-                      <li>
-                          <Link to='/movies' className='btn'> Some btn </Link>
-                      </li>
-                  </ul>
+        <header>
+            <div className="container">
+                <div className="inner-content">
+                    <div className="brand">
+                        <Link to='/movies'>Movie catalog</Link>
+                    </div>
+                    <ul className="nav-links">
+                        <li>
+                            <Link to='/movies'> Some link </Link>
+                        </li>
+                        <li>
+                            <Link to='/movies' className='btn'> Some btn </Link>
+                        </li>
+                    </ul>
 
-              </div>
-          </div>
-      </header>
+                </div>
+            </div>
+        </header>
     );
 };
 

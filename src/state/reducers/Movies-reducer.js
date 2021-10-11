@@ -25,7 +25,7 @@ const moviesReducer = (state = initialState, action) => {
         case SET_MOVIES:
             return {
                 ...state,
-               movies: action.moviesList
+                movies: action.moviesList
             };
         case SET_PAGE_NUMBER:
             return {
@@ -38,10 +38,10 @@ const moviesReducer = (state = initialState, action) => {
                 totalMoviesCount: action.count
             }
         case SET_IS_FETCHING:
-        return {
-            ...state,
-            isFetching: action.boolean
-        }
+            return {
+                ...state,
+                isFetching: action.boolean
+            }
         case SET_CURRENT_MOVIES_ID: {
             return {
                 ...state,
@@ -53,16 +53,16 @@ const moviesReducer = (state = initialState, action) => {
                 id: state.comments.length + 1,
                 comment: action.comment,
             }
-            return  {
+            return {
                 ...state,
                 comments: [...state.comments, newComments]
             }
         }
         case DELETE_COMMENT:
-        return {
-            ...state,
-            comments: state.comments.filter(comment => comment.id !== action.id)
-        }
+            return {
+                ...state,
+                comments: state.comments.filter(comment => comment.id !== action.id)
+            }
         default:
             return state;
     }
